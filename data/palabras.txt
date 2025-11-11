@@ -1,18 +1,116 @@
-PROGRAMACION informatica 1
-CODIGO informatica 1
+# ========== DIFICULTAD 1 (Fácil - 3-5 letras) ==========
 GATO animales 1
+PERRO animales 1
+OSO animales 1
+RANA animales 1
 CASA objetos 1
+MESA objetos 1
+SILLA objetos 1
+COCHE objetos 1
 SOL naturaleza 1
 LUNA naturaleza 1
-COMPUTADORA informatica 2
-ALGORITMO informatica 2
+MAR naturaleza 1
+RIO naturaleza 1
+ROJO colores 1
+AZUL colores 1
+VERDE colores 1
+AMARILLO colores 1
+PAN comida 1
+QUESO comida 1
+ARROZ comida 1
+LECHE comida 1
+
+# ========== DIFICULTAD 2 (Media - 6-8 letras) ==========
 ELEFANTE animales 2
-TELEFONO objetos 2
+JIRAFA animales 2
+LEOPARDO animales 2
+DELFIN animales 2
+COMPUTADORA informatica 2
+TECLADO informatica 2
+MONITOR informatica 2
+IMPRESORA informatica 2
 MONTANA naturaleza 2
-OCEANO naturaleza 2
+VOLCAN naturaleza 2
+PLAYA naturaleza 2
+BOSQUE naturaleza 2
+TELEFONO objetos 2
+RELOJ objetos 2
+ESPEJO objetos 2
+VENTANA objetos 2
+NARANJA colores 2
+MORADO colores 2
+ROSA colores 2
+GRIS colores 2
+MANZANA comida 2
+NARANJA comida 2
+PLATANO comida 2
+SANDIA comida 2
+
+# ========== DIFICULTAD 3 (Difícil - 9+ letras) ==========
+HIPOPOTAMO animales 3
+RINOCERONTE animales 3
+CANGURO animales 3
+MARIPOSA animales 3
+PROGRAMACION informatica 3
+ALGORITMO informatica 3
 BASE_DATOS informatica 3
 CRIPTografia informatica 3
-HIPOPOTAMO animales 3
 REFRIGERADOR objetos 3
+BICICLETA objetos 3
+PARAGUAS objetos 3
+TELEVISION objetos 3
 BIOdiversidad naturaleza 3
 FOTOSINTESIS naturaleza 3
+ECOSISTEMA naturaleza 3
+CONTAMINACION naturaleza 3
+ESMERALDA colores 3
+TURQUESA colores 3
+MAGENTA colores 3
+BERMELLON colores 3
+CHOCOLATE comida 3
+HELADO comida 3
+GALLETA comida 3
+HAMBURGUESA comida 3
+
+# ========== CATEGORÍA EXTRA: PROFESIONES ==========
+MEDICO profesiones 2
+MAESTRO profesiones 2
+BOMBERO profesiones 2
+POLICIA profesiones 2
+INGENIERO profesiones 3
+ARQUITECTO profesiones 3
+CIENTIFICO profesiones 3
+MUSICO profesiones 2
+
+# ========== CATEGORÍA EXTRA: DEPORTES ==========
+FUTBOL deportes 1
+TENIS deportes 1
+NATACION deportes 2
+BALONCESTO deportes 2
+VOLEIBOL deportes 2
+ATLETISMO deportes 3
+CICLISMO deportes 2
+
+# ========== CATEGORÍA EXTRA: PAÍSES ==========
+CHILE paises 2
+ARGENTINA paises 3
+BRASIL paises 2
+MEXICO paises 2
+CANADA paises 2
+ESPAÑA paises 2
+FRANCIA paises 2
+ALEMANIA paises 3
+JAPON paises 2
+CHINA paises 2
+
+# ========== CATEGORÍA EXTRA: CIUDADES ==========
+LONDRES ciudades 2
+PARIS ciudades 2
+ROMA ciudades 2
+TOKIO ciudades 2
+MADRID ciudades 2
+BERLIN ciudades 2
+MOSCU ciudades 2
+ELCAIRO ciudades 2
+SANTIAGO ciudades 2
+BOGOTA ciudades 2
