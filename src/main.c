@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "tad_jugador.h"
+#include "ahorcado.h"
 
 /**
  * Función: mostrarMenuPrincipal
@@ -57,11 +58,10 @@ int main() {
         scanf("%d", &opcion);
         
         switch(opcion) {
-            case 1:
-                printf("\nIniciando Juego del Ahorcado...\n");
-                // jugarAhorcado(jugadorActual);
-                printf("(Próximamente)\n");
-                break;
+           case 1:
+           printf("\nIniciando Juego del Ahorcado...\n");
+           jugarAhorcado(jugadorActual); 
+           break;
             case 2:
                 printf("\nIniciando Memorama...\n");
                 // jugarMemorama(jugadorActual);
