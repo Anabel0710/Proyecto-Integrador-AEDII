@@ -12,9 +12,7 @@
 
 void jugarAhorcado(Jugador* jugador) {
     printf("\n🎮 === JUEGO DEL AHORCADO === 🎮\n");
-    
-    // Inicializar semilla para números aleatorios
-    srand(time(NULL));
+        srand(time(NULL));
     
     // Crear y cargar lista enlazada de palabras
     ListaPalabras* diccionario = crearListaPalabras();
@@ -23,8 +21,8 @@ void jugarAhorcado(Jugador* jugador) {
         return;
     }
     
-    // Cargar palabras desde archivo
-    if (cargarPalabrasDesdeArchivo(diccionario, "palabras.txt") == 0) {
+    // Cargar palabras desde archivo - CORREGIDA LA RUTA
+    if (cargarPalabrasDesdeArchivo(diccionario, "data/palabras.txt") == 0) {
         printf("Error: No hay palabras disponibles.\n");
         liberarListaPalabras(diccionario);
         return;
@@ -92,7 +90,8 @@ void jugarAhorcado(Jugador* jugador) {
         }
         printf("\n");
         
-        // Solicitar letra
+        // === PARTE QUE FALTABA ===
+        // Solicitar letra al jugador
         char letra;
         printf("Ingresa una letra: ");
         scanf(" %c", &letra);
