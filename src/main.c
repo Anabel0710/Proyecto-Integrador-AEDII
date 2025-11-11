@@ -1,31 +1,13 @@
-/**
- * MINI GAMES HUB - PROGRAMA PRINCIPAL
- * Código corregido para GCC estándar
- */
-
 #include <stdio.h>
 #include <stdlib.h>
-#include "tad_jugador.h"
-#include "ahorcado.h"
+#include "../headers/tad_jugador.h"
+#include "../headers/ahorcado.h"
+#include "../headers/memorama.h"
+#include "../headers/adivinanza.h"
 
-/**
- * Función: mostrarMenuPrincipal
- * Descripción: Muestra el menú principal del sistema
- */
-void mostrarMenuPrincipal() {
-    printf("\n=== MINI GAMES HUB ===\n");
-    printf("1. 🧠 Juego del Ahorcado\n");
-    printf("2. 🎴 Juego de Memorama\n");
-    printf("3. 🔢 Adivinanza Matematica\n");
-    printf("4. 📊 Ver Estadisticas\n");
-    printf("0. 🚪 Salir\n");
-    printf("Selecciona una opcion: ");
-}
 
-/**
- * Función: main
- * Descripción: Punto de entrada principal del programa
- */
+void mostrarMenuPrincipal();
+
 int main() {
     Jugador* jugadorActual = NULL;
     char nombre[MAX_NOMBRE];
@@ -34,8 +16,7 @@ int main() {
     // Encabezado del sistema
     printf("=== MINI GAMES HUB ===\n");
     printf("Sistema de videojuegos en C - Proyecto Academico\n\n");
-    
-    // Solicitar nombre del jugador - USANDO scanf ESTÁNDAR
+
     printf("Ingresa tu nombre: ");
     scanf("%49s", nombre);
     
@@ -99,4 +80,15 @@ int main() {
     printf("Programa terminado correctamente.\n");
     
     return 0;
+}
+
+
+void mostrarMenuPrincipal() {
+    printf("\n=== MINI GAMES HUB ===\n");
+    printf("1. 🧠 Juego del Ahorcado\n");
+    printf("2. 🎴 Juego de Memorama\n");
+    printf("3. 🔢 Adivinanza Matematica\n");
+    printf("4. 📊 Ver Estadisticas\n");
+    printf("0. 🚪 Salir\n");
+    printf("Selecciona una opcion: ");
 }

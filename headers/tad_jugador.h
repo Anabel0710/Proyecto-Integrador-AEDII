@@ -1,6 +1,5 @@
 /**
  * TAD JUGADOR - Gestiona la información de los jugadores
- * Implementación corregida para GCC estándar
  */
 
 #ifndef TAD_JUGADOR_H
