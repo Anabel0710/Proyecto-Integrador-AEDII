@@ -7,6 +7,16 @@ echo.
 
 cd /d "C:\Users\2299r\OneDrive\Escritorio\ProyectoIntegrador"
 
+echo 📁 Verificando archivos...
+if not exist "headers\tad_jugador.h" (
+    echo ❌ ERROR: No se encuentra headers\tad_jugador.h
+    echo 💡 Solución: Usar rutas relativas en los includes
+    echo    Cambia: #include "tad_jugador.h"
+    echo    Por:    #include "../headers/tad_jugador.h"
+    pause
+    exit /b 1
+)
+
 echo 🔨 Compilando con GCC...
 gcc -Wall -Wextra -std=c99 -Iheaders -o minigameshub.exe src/main.c src/tad_jugador.c src/lista_palabras.c src/ahorcado.c
 
@@ -20,11 +30,6 @@ if %errorlevel% == 0 (
 ) else (
     echo.
     echo ❌ ERROR EN COMPILACIÓN
-    echo.
-    echo Posibles soluciones:
-    echo 1. Verificar que todos los archivos .c y .h existen
-    echo 2. Revisar los includes en los archivos .c
-    echo 3. Ejecutar desde la carpeta correcta
-    echo.
+    echo 💡 Solución rápida: Editar src/main.c y cambiar includes
     pause
 )
