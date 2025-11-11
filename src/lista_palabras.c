@@ -3,7 +3,7 @@
  * Gestiona el diccionario de palabras usando listas enlazadas
  */
 
-#include "lista_palabras.h"
+#include "../headers/lista_palabras.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

@@ -1,8 +1,4 @@
-/**
- * IMPLEMENTACIÓN TAD JUGADOR - Gestiona la información de los jugadores
- */
-
-#include "tad_jugador.h"
+#include "../headers/tad_jugador.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

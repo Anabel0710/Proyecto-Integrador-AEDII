@@ -1,4 +1,3 @@
-# ========== DIFICULTAD 1 (Fácil - 3-5 letras) ==========
 GATO animales 1
 PERRO animales 1
 OSO animales 1
@@ -19,8 +18,6 @@ PAN comida 1
 QUESO comida 1
 ARROZ comida 1
 LECHE comida 1
-
-# ========== DIFICULTAD 2 (Media - 6-8 letras) ==========
 ELEFANTE animales 2
 JIRAFA animales 2
 LEOPARDO animales 2
@@ -45,8 +42,6 @@ MANZANA comida 2
 NARANJA comida 2
 PLATANO comida 2
 SANDIA comida 2
-
-# ========== DIFICULTAD 3 (Difícil - 9+ letras) ==========
 HIPOPOTAMO animales 3
 RINOCERONTE animales 3
 CANGURO animales 3
@@ -81,8 +76,6 @@ INGENIERO profesiones 3
 ARQUITECTO profesiones 3
 CIENTIFICO profesiones 3
 MUSICO profesiones 2
-
-# ========== CATEGORÍA EXTRA: DEPORTES ==========
 FUTBOL deportes 1
 TENIS deportes 1
 NATACION deportes 2
@@ -90,8 +83,6 @@ BALONCESTO deportes 2
 VOLEIBOL deportes 2
 ATLETISMO deportes 3
 CICLISMO deportes 2
-
-# ========== CATEGORÍA EXTRA: PAÍSES ==========
 CHILE paises 2
 ARGENTINA paises 3
 BRASIL paises 2
@@ -102,8 +93,6 @@ FRANCIA paises 2
 ALEMANIA paises 3
 JAPON paises 2
 CHINA paises 2
-
-# ========== CATEGORÍA EXTRA: CIUDADES ==========
 LONDRES ciudades 2
 PARIS ciudades 2
 ROMA ciudades 2

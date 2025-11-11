@@ -3,7 +3,7 @@
  * Usa listas enlazadas para el diccionario y algoritmos de búsqueda
  */
 
-#include "ahorcado.h"
+#include "../headers/ahorcado.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
