@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <time.h>
+#include "tad_jugador.h"
 
 #define MAX 9
 
@@ -29,12 +30,15 @@ bool checkGanador(tTablero pTablero);
 void turnoIA(tTablero pTablero);
 
 // Modos de juego
-void tresEnRayaSolo();
-void tresEnRayaDuo();
+void tresEnRayaSolo(Jugador* jugador);
+void tresEnRayaDuo(Jugador* jugador);
 
 // Menú del juego
 void mostrarMenuModosTresEnRaya();
-void jugarTresEnRaya();
+void jugarTresEnRaya(Jugador* jugador);
+
+// Función para calcular puntuación
+int calcularPuntuacionTresEnRaya(int modo, bool gano); 
 
 /* IMPLEMENTACIONES */
 
@@ -56,6 +60,19 @@ void pausarPantalla() {
     printf("\nPresione ENTER para continuar...");
     while (getchar() != '\n');
     getchar();
+}
+
+/**
+ * Calcula la puntuación basada en el modo y resultado
+ */
+int calcularPuntuacionTresEnRaya(int modo, bool gano) {
+    if (!gano) return 0; // No hay puntos si pierde o empate
+    
+    if (modo == 1) {
+        return 100; // 100 puntos por ganar vs máquina
+    } else {
+        return 50;  // 50 puntos por ganar vs otro jugador
+    }
 }
 
 /**
@@ -131,10 +148,11 @@ void turnoIA(tTablero pTablero) {
 /**
  * Modo de juego: un jugador vs la máquina
  */
-void tresEnRayaSolo() {
+void tresEnRayaSolo(Jugador* jugador) {
     int opc, turno, lecturaCorrecta;
-    char jugador = 'X';
+    char jugadorChar = 'X';  // CAMBIÉ el nombre para evitar conflicto
     bool hayGanador = false;
+    bool ganoJugador = false;  // AGREGUE esta variable
     tTablero tablero;
     
     srand(time(NULL));
@@ -159,12 +177,13 @@ void tresEnRayaSolo() {
         } while(true);
         
         limpiarPantalla();
-        tablero[opc-1] = jugador;
+        tablero[opc-1] = jugadorChar;
         hayGanador = checkGanador(tablero);
         
         if(hayGanador) {
             imprimirTablero(tablero);
             printf("    ¡Gana el jugador! \n\n"); 
+            ganoJugador = true;  // AGREGUE esto
             break;                         
         }
         
@@ -174,6 +193,7 @@ void tresEnRayaSolo() {
             if(hayGanador) {
                 imprimirTablero(tablero);
                 printf("    ¡Gana la maquina! \n\n"); 
+                ganoJugador = false;  // AGREGUE esto
                 break;
             }
         }                         
@@ -182,24 +202,38 @@ void tresEnRayaSolo() {
     if (!hayGanador) {
         imprimirTablero(tablero);
         printf("   Empate, no hay mas movimientos.\n\n");  
+        ganoJugador = false;  // AGREGUE esto
     }
+    
+    // ACTUALIZAR ESTADÍSTICAS - NUEVO CÓDIGO
+    if (jugador != NULL) {
+        int puntuacion = calcularPuntuacionTresEnRaya(1, ganoJugador);
+        if (ganoJugador) {
+            printf("🏆 Puntuación obtenida: %d puntos\n", puntuacion);
+            actualizarEstadisticas(jugador, 1, puntuacion);
+        } else {
+            actualizarEstadisticas(jugador, 0, 0);
+        }
+    }
+    
     pausarPantalla();
 }
 
 /**
  * Modo de juego: dos jugadores en el mismo dispositivo
  */
-void tresEnRayaDuo() {
+void tresEnRayaDuo(Jugador* jugador) {
     int opc, turno, lecturaCorrecta;
-    char jugador = 'X';
+    char jugadorChar = 'X';  // CAMBIÉ el nombre para evitar conflicto
     bool hayGanador = false;
+    bool ganoJugadorX = false;  // AGREGUE esta variable
     tTablero tablero;
     
     iniciarTablero(tablero);
     
     for(turno = 1; turno <= MAX; turno++) {
         imprimirTablero(tablero);
-        printf("Turno del jugador %c\n", jugador);
+        printf("Turno del jugador %c\n", jugadorChar);
         printf("Selecciona una casilla vacia (1-9).\n>");
         
         do {
@@ -217,22 +251,36 @@ void tresEnRayaDuo() {
         } while(true);
         
         limpiarPantalla();
-        tablero[opc-1] = jugador;
+        tablero[opc-1] = jugadorChar;
         hayGanador = checkGanador(tablero);
         
         if(hayGanador) {
             imprimirTablero(tablero);
-            printf("    ¡Gana el jugador %c! \n\n", jugador); 
+            printf("    ¡Gana el jugador %c! \n\n", jugadorChar); 
+            ganoJugadorX = (jugadorChar == 'X');  // AGREGUE esto
             break;                         
         }
         
-        jugador = (jugador == 'X') ? 'O' : 'X';
+        jugadorChar = (jugadorChar == 'X') ? 'O' : 'X';
     }
     
     if (!hayGanador) {
         imprimirTablero(tablero);
         printf("   Empate, no hay mas movimientos.\n\n");  
+        ganoJugadorX = false;  // AGREGUE esto
     }
+    
+    // ACTUALIZAR ESTADÍSTICAS - NUEVO CÓDIGO
+    if (jugador != NULL) {
+        int puntuacion = calcularPuntuacionTresEnRaya(2, ganoJugadorX);
+        if (ganoJugadorX) {
+            printf("🏆 Puntuación obtenida: %d puntos\n", puntuacion);
+            actualizarEstadisticas(jugador, 1, puntuacion);
+        } else {
+            actualizarEstadisticas(jugador, 0, 0);
+        }
+    }
+    
     pausarPantalla();
 }
 
@@ -249,7 +297,7 @@ void mostrarMenuModosTresEnRaya() {
 /**
  * Función principal del juego - Maneja el flujo completo
  */
-void jugarTresEnRaya() {
+void jugarTresEnRaya(Jugador* jugador) {
     printf("\n=== TRES EN RAYA ===\n");
     
     int modo;
@@ -258,10 +306,10 @@ void jugarTresEnRaya() {
     
     if (modo == 1) {
         printf("\nModo: Solo vs Máquina\n");
-        tresEnRayaSolo();
+        tresEnRayaSolo(jugador);  // CORREGÍ: quitÉ "Jugador*"
     } else if (modo == 2) {
         printf("\nModo: Dos Jugadores\n");
-        tresEnRayaDuo();
+        tresEnRayaDuo(jugador);   // CORREGÍ: quitÉ "Jugador*"
     } else {
         printf("\nOpción inválida, volviendo al menú...\n");
         pausarPantalla();
