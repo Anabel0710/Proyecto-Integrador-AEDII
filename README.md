@@ -1,4 +1,3 @@
-```markdown
 # 🎮 MiniGames Hub - Juegos Clásicos - Proyecto Integrador
 
 ## 👨‍🎓 Integrantes del Grupo
@@ -20,7 +19,7 @@ El proyecto fue el resultado de un proceso de lluvia de ideas grupal donde consi
 
 - **Sistemas de gestión** con inventarios y bases de datos
 - **Aplicaciones educativas** con contenido interactivo  
-- **Juegos clásicos** como Ahorcado, Memorama, y sistemas de adivinanza
+- **Juegos clásicos** como Ahorcado, Tres en Raya, y sistemas de adivinanza
 - **Plataformas interactivas** con múltiples minijuegos
 
 Finalmente, optamos por desarrollar MiniGames Hub porque nos permitía:
@@ -83,15 +82,15 @@ El proyecto aborda la necesidad de demostrar competencia práctica en el uso de 
 - **Arrays estáticos:** Descartados por limitación de tamaño
 - **Tablas hash:** Excesivo para nuestro volumen de datos
 
-### 2. Pilas (LIFO)
+### 2. Arrays Estáticos para Tableros
 **¿Dónde se usa?**
-- `PilaMovimientos` en el juego de Memorama
-- Sistema de deshacer/rehacer movimientos
+- `tTablero[MAX]` en el juego del Tres en Raya
+- Representación del tablero 3x3
 
 **¿Por qué es adecuado?**
-- **Comportamiento natural:** Último movimiento entrado = primero en salir
-- **Eficiencia:** Operaciones O(1) para apilar/desapilar
-- **Simplicidad:** Ideal para historial de acciones
+- **Acceso directo:** O(1) para cualquier posición del tablero
+- **Simplicidad:** Ideal para estructuras de tamaño fijo
+- **Eficiencia en memoria:** Sin overhead de punteros
 
 ### 3. Árboles Binarios de Búsqueda
 **¿Dónde se usa?**
@@ -103,28 +102,17 @@ El proyecto aborda la necesidad de demostrar competencia práctica en el uso de 
 - **Orden natural:** Ideal para datos ordenables como nombres
 - **Escalabilidad:** Mantiene rendimiento con muchos usuarios
 
-### 4. Recursividad
+### 4. Algoritmos de Verificación
 **¿Dónde se usa?**
-- Recorrido de árboles binarios
-- Algoritmos de verificación en Memorama
-- Búsqueda en profundidad en estructuras
+- Verificación de patrones ganadores en Tres en Raya
+- Búsqueda lineal en arrays para estado del juego
 
 **¿Por qué es adecuado?**
-- **Elegancia:** Código más conciso y legible
-- **Natural para árboles:** Coincide con estructura recursiva
-- **Problema dividido:** Soluciones más comprensibles
+- **Simplicidad:** Algoritmos O(n) para problemas pequeños
+- **Claridad:** Código fácil de entender y mantener
+- **Eficiencia:** Suficiente para el tamaño del problema
 
-### 5. Algoritmos de Ordenamiento
-**¿Dónde se usa?**
-- QuickSort para ranking de jugadores
-- Ordenamiento de palabras por dificultad
-
-**¿Por qué es adecuado?**
-- **Eficiencia:** O(n log n) en caso promedio
-- **Versatilidad:** Aplicable a diferentes tipos de datos
-- **Estabilidad:** Mantiene orden relativo
-
-### 6. Sistema de Archivos
+### 5. Sistema de Archivos
 **¿Dónde se usa?**
 - Persistencia de jugadores en `jugadores.dat` (binario)
 - Diccionario de palabras en `palabras.txt` (texto)
@@ -133,6 +121,36 @@ El proyecto aborda la necesidad de demostrar competencia práctica en el uso de 
 - **Persistencia:** Datos conservados entre ejecuciones
 - **Eficiencia:** Archivos binarios para datos estructurados
 - **Flexibilidad:** Texto plano para configuración
+
+## 🎮 JUEGOS IMPLEMENTADOS
+
+### 🎯 Juego del Ahorcado
+**Características:**
+- Múltiples niveles de dificultad
+- Sistema de categorías de palabras
+- Interfaz visual con progresión del ahorcado
+- Puntuación basada en dificultad e intentos restantes
+
+**Estructuras utilizadas:**
+- Listas enlazadas para gestión de diccionario
+- Algoritmos de búsqueda y filtrado
+- Sistema de archivos para persistencia
+
+### ⭕ Juego del Tres en Raya
+**Características:**
+- Dos modos de juego: vs Máquina y Dos Jugadores
+- IA básica con movimientos aleatorios
+- Detección automática de ganadores y empates
+- Sistema de puntuación integrado
+
+**Estructuras utilizadas:**
+- Arrays estáticos para representación del tablero
+- Algoritmos de verificación de patrones
+- Integración con sistema de estadísticas de jugadores
+
+**Modos de Juego:**
+1. **Solo vs Máquina:** Juega contra la computadora (IA básica)
+2. **Dos Jugadores:** Juego local para dos personas
 
 ## 📦 TADs Implementados
 
@@ -147,144 +165,125 @@ typedef struct {
 ```
 **Operaciones:** crear, destruir, actualizar, mostrar, guardar/cargar
 
-### TAD 2: Carta
+### TAD 2: Tablero Tres en Raya
 ```c
-typedef struct {
-    int id;
-    char simbolo;
-    int visible;
-    int x, y;
-} Carta;
+#define MAX 9
+typedef char tTablero[MAX];
 ```
-**Operaciones:** crear, destruir, voltear, comparar
-
-## 🎮 Desarrollo Obtenido
-
-### ✅ Sistema Core Completado
-
-**Arquitectura Principal**
-- Menú de navegación intuitivo
-- Sistema de gestión de jugadores
-- Persistencia automática de datos
-- Manejo robusto de errores
-
-**Gestión de Usuarios**
-- Identificación por nombre
-- Estadísticas individuales
-- Ranking global actualizado
-- Persistencia en archivos binarios
-
-### ✅ Juego del Ahorcado Completado
-
-**Lógica del Juego**
-- Sistema de palabras por categorías
-- Múltiples niveles de dificultad
-- Interfaz visual con progresión
-- Sistema de puntuación inteligente
-
-**Estructuras Utilizadas**
-- Listas enlazadas para diccionario
-- Algoritmos de búsqueda lineal
-- Archivos de texto para palabras
-
-### ✅ Juego de Memorama Completado
-
-**Lógica del Juego**
-- Tablero dinámico de cartas
-- Sistema de emparejamiento
-- Conteo de movimientos
-- Puntuación por eficiencia
-
-**Estructuras Utilizadas**
-- Pilas para historial de movimientos
-- Recursividad para verificación
-- TAD Carta para modelado
-
-### 🔄 Sistema de Adivinanza en Desarrollo
-
-**Características Planeadas**
-- Árboles binarios para preguntas
-- Algoritmos de búsqueda eficiente
-- Sistema de aprendizaje adaptativo
+**Operaciones:** iniciar, imprimir, verificar_ganador, verificar_casilla
 
 ## 🚀 Compilación y Ejecución
 
 ### Requisitos
 - Compilador GCC estándar
-- Sistema Windows/Linux
+- Sistema Windows/Linux/macOS
 
 ### Compilación
 ```bash
-gcc -Wall -Wextra -std=c99 -Iheaders -o minigameshub.exe \
-    src/main.c src/tad_jugador.c src/tad_carta.c \
-    src/lista_encadenada.c src/pila_movimientos.c \
-    src/arbol_binario.c src/ahorcado.c src/memorama.c
+# Compilación en Windows
+gcc -Wall -Wextra -std=c99 -Iheaders -o minigameshub.exe src/*.c
+
+# Compilación en Linux/macOS
+gcc -Wall -Wextra -std=c99 -Iheaders -o minigameshub src/*.c
 ```
 
 ### Ejecución
 ```bash
-./minigameshub.exe
+# Windows
+minigameshub.exe
+
+# Linux/macOS
+./minigameshub
 ```
 
-## 📈 Estructuras de Datos en Acción
+## 🎯 Estructura del Proyecto
 
-### En el Ahorcado:
-```c
-// Lista enlazada de palabras
-typedef struct NodoPalabra {
-    char palabra[20];
-    char categoria[15];
-    struct NodoPalabra* siguiente;
-} NodoPalabra;
-
-// Recorrido de lista para búsqueda
-NodoPalabra* buscarPalabra(ListaPalabras* lista, const char* palabra) {
-    NodoPalabra* actual = lista->cabeza;
-    while (actual != NULL) {
-        if (strcmp(actual->palabra, palabra) == 0) {
-            return actual;
-        }
-        actual = actual->siguiente;
-    }
-    return NULL;
-}
+```
+MiniGamesHub/
+├── headers/
+│   ├── tad_jugador.h
+│   ├── ahorcado.h
+│   ├── tres_en_raya.h
+│   └── 
+├── src/
+│   ├── main.c
+|
+├── data/
+│   ├── palabras.txt
+│   └── jugadores.dat
+└── README.md
 ```
 
-### En el Sistema General:
-```c
-// Árbol binario para búsqueda eficiente
-Jugador* buscarJugador(ArbolJugadores* arbol, const char* nombre) {
-    // Implementación de búsqueda binaria
-    if (arbol == NULL) return NULL;
-    int comparacion = strcmp(nombre, arbol->jugador->nombre);
-    if (comparacion == 0) return arbol->jugador;
-    if (comparacion < 0) return buscarJugador(arbol->izquierdo, nombre);
-    else return buscarJugador(arbol->derecho, nombre);
-}
-```
+## 💾 Sistema de Persistencia
 
-## 💡 Impacto y Valor Agregado
+### Jugadores
+- **Archivo:** `data/jugadores.dat` (binario)
+- **Estructura:** Datos de jugadores con estadísticas
+- **Operaciones:** Guardado y carga automática
+
+### Diccionario Ahorcado
+- **Archivo:** `data/palabras.txt` (texto)
+- **Formato:** `categoria:palabra1,palabra2,palabra3`
+- **Categorías:** Animales, Países, Frutas, etc.
+
+## 🏆 Sistema de Puntuación
+
+### Ahorcado
+- **Fácil:** 100 puntos base + 10 por intento restante
+- **Medio:** 200 puntos base + 10 por intento restante  
+- **Difícil:** 300 puntos base + 10 por intento restante
+
+### Tres en Raya
+- **Vs Máquina:** 100 puntos por victoria
+- **Dos Jugadores:** 50 puntos por victoria (solo jugador X)
+
+## 🔧 Características Técnicas
+
+### Gestión de Memoria
+- Asignación y liberación adecuada de memoria
+- Prevención de memory leaks
+- Manejo robusto de errores
+
+### Interfaz de Usuario
+- Menús intuitivos y navegables
+- Validación de entradas del usuario
+- Feedback claro del estado del juego
+
+### Portabilidad
+- Código compatible con Windows, Linux y macOS
+- Detección automática del sistema operativo
+- Funciones de limpieza de pantalla multiplataforma
+
+## 🎮 Flujo de la Aplicación
+
+1. **Inicio:** Carga de jugadores y datos
+2. **Menú Principal:** 
+   - Gestión de Jugadores
+   - Menú de Juegos
+   - Estadísticas
+   - Salir
+3. **Menú de Juegos:**
+   - Ahorcado (con selección de dificultad)
+   - Tres en Raya (con selección de modo)
+4. **Juego:** Ejecución con seguimiento de estadísticas
+5. **Persistencia:** Guardado automático al salir
+
+## 💡 Valor Agregado
 
 ### Más Allá de los Requisitos
-El proyecto demuestra cómo las estructuras de datos fundamentales pueden combinarse para crear sistemas complejos y funcionales. Cada estructura fue seleccionada específicamente para resolver problemas concretos:
+El proyecto demuestra cómo las estructuras de datos fundamentales pueden combinarse para crear sistemas complejos y funcionales:
 
-- **Listas enlazadas** para datos dinámicos y frecuentemente modificados
-- **Pilas** para comportamientos LIFO naturales
-- **Árboles binarios** para búsqueda eficiente en datos ordenados
-- **Recursividad** para problemas inherentemente recursivos
+- **Integración perfecta** entre diferentes estructuras de datos
+- **Sistema modular** que permite agregar nuevos juegos fácilmente
+- **Persistencia robusta** que mantiene la experiencia del usuario
+- **Interfaz intuitiva** que hace los juegos accesibles
 
-### Aprendizaje Integral
-Cada integrante aportó desde diferentes perspectivas:
-
-- **Diseño de algoritmos:** Optimización y eficiencia
-- **Gestión de memoria:** Prevención de leaks y errores
-- **Diseño de TADs:** Abstracción y encapsulamiento
-- **Integración:** Ensamblaje de módulos independientes
-
-Esta diversidad enriqueció el proyecto y demostró cómo los fundamentos de algoritmos y estructuras de datos permiten la colaboración efectiva en el desarrollo de software complejo.
+### Aprendizajes Clave
+- **Diseño de TADs** para problemas específicos
+- **Gestión de memoria** en aplicaciones complejas
+- **Integración de módulos** independientes
+- **Persistencia de datos** en diferentes formatos
 
 ---
 
 **🎓 Proyecto Académico - Algoritmos y Estructuras de Datos II**  
-*Demostrando dominio práctico de estructuras de datos en C*
-```
