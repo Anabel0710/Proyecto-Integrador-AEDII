@@ -1,6 +1,4 @@
-/**
- * JUEGO DEL AHORCADO
- * Implementa el juego usando listas enlazadas y algoritmos de búsqueda
+/**JUEGO DEL AHORCADO Implementa el juego usando listas enlazadas y algoritmos de búsqueda
  */
 
 #ifndef AHORCADO_H

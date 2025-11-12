@@ -9,7 +9,7 @@
 #include "tad_jugador.h"
 #include "lista_palabras.h"
 #include "ahorcado.h"
-// #include "tres_en_raya.h"  // Cuando lo integres
+#include "tres_en_raya.h" 
 // #include "memorama.h"      // Cuando lo integres  
 // #include "adivinanza.h"    // Cuando lo integres
 
@@ -47,8 +47,7 @@ int main() {
                 break;
             case 2:
                 printf("\nIniciando Tres en Raya...\n");
-                // jugarTresEnRaya(jugadorActual);
-                printf("(Próximamente)\n");
+                jugarTresEnRaya(jugadorActual);  // Directo del header
                 break;
             case 3:
                 printf("\nIniciando Memorama...\n");
