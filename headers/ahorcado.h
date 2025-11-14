@@ -1,4 +1,4 @@
-/**JUEGO DEL AHORCADO Implementa el juego usando listas enlazadas y algoritmos de búsqueda
+/**JUEGO DEL AHORCADO Implementa el juego usando listas enlazadas y algoritmos de busqueda
  */
 
 #ifndef AHORCADO_H
@@ -12,20 +12,21 @@
 #include <ctype.h>
 #include <time.h>
 
-/* Interfaz pública del juego del Ahorcado */
+/* Interfaz publica del juego del Ahorcado */
 
 // Juega una partida completa del ahorcado
 void jugarAhorcado(Jugador* jugador);
 
-// Muestra el dibujo del ahorcado según los intentos fallidos
+// Muestra el dibujo del ahorcado segun los intentos fallidos
 void dibujarAhorcado(int intentosFallidos);
 
-// Calcula la puntuación basada en la dificultad e intentos
+// Calcula la puntuacion basada en la dificultad e intentos
 int calcularPuntuacion(int dificultad, int intentosRestantes);
 
 /* IMPLEMENTACIONES COMPLETAS */
 void jugarAhorcado(Jugador* jugador) {
-    printf("\n🎮 === JUEGO DEL AHORCADO === 🎮\n");
+	int i;
+    printf("\n=== JUEGO DEL AHORCADO === \n");
     
     srand(time(NULL));
     ListaPalabras* diccionario = crearListaPalabras();
@@ -38,19 +39,19 @@ void jugarAhorcado(Jugador* jugador) {
     
     int dificultad;
     printf("\nSelecciona dificultad:\n");
-    printf("1. Fácil\n2. Media\n3. Difícil\nOpción: ");
+    printf("1. Facil\n2. Media\n3. Dificil\nOpcion: ");
     scanf("%d", &dificultad);
     
     if (dificultad < 1 || dificultad > 3) dificultad = 2;
     
     NodoPalabra* palabraObj = obtenerPalabraAleatoria(diccionario, dificultad);
     if (palabraObj == NULL) {
-        printf("❌ No hay palabras para dificultad %d\n", dificultad);
+        printf("No hay palabras para dificultad %d\n", dificultad);
         liberarListaPalabras(diccionario);
         return;
     }
     
-    printf("\n✅ Categoría: %s\n", palabraObj->categoria);
+    printf("\n Categoria: %s\n", palabraObj->categoria);
     
     char palabraSecreta[MAX_PALABRA];
     char palabraAdivinada[MAX_PALABRA];
@@ -58,7 +59,7 @@ void jugarAhorcado(Jugador* jugador) {
     int intentos = 6, letrasAdivinadas = 0;
     int longitud = strlen(palabraObj->palabra);
     
-    for (int i = 0; i < longitud; i++) {
+    for ( i = 0; i < longitud; i++) {
         palabraSecreta[i] = toupper(palabraObj->palabra[i]);
         palabraAdivinada[i] = '_';
     }
@@ -69,11 +70,11 @@ void jugarAhorcado(Jugador* jugador) {
         printf("\n");
         dibujarAhorcado(6 - intentos);
         printf("\nPalabra: ");
-        for (int i = 0; i < longitud; i++) printf("%c ", palabraAdivinada[i]);
+        for (i = 0; i < longitud; i++) printf("%c ", palabraAdivinada[i]);
         
         printf("\nIntentos: %d\n", intentos);
         printf("Letras usadas: ");
-        for (int i = 0; i < 26; i++) {
+        for ( i = 0; i < 26; i++) {
             if (letrasUsadas[i]) printf("%c ", 'A' + i);
         }
         printf("\n");
@@ -84,19 +85,19 @@ void jugarAhorcado(Jugador* jugador) {
         letra = toupper(letra);
         
         if (letra < 'A' || letra > 'Z') {
-            printf("❌ Letra inválida\n");
+            printf("Letra invalida\n");
             continue;
         }
         
         if (letrasUsadas[letra - 'A']) {
-            printf("❌ Ya usaste '%c'\n", letra);
+            printf("Ya usaste '%c'\n", letra);
             continue;
         }
         
         letrasUsadas[letra - 'A'] = 1;
         int encontrada = 0;
         
-        for (int i = 0; i < longitud; i++) {
+        for (i = 0; i < longitud; i++) {
             if (palabraSecreta[i] == letra && palabraAdivinada[i] == '_') {
                 palabraAdivinada[i] = letra;
                 letrasAdivinadas++;
@@ -105,23 +106,23 @@ void jugarAhorcado(Jugador* jugador) {
         }
         
         if (encontrada) {
-            printf("✅ '%c' está en la palabra\n", letra);
+            printf("'%c' esta en la palabra\n", letra);
         } else {
             intentos--;
-            printf("❌ '%c' no está\n", letra);
+            printf("'%c' no esta\n", letra);
         }
         
         if (letrasAdivinadas == longitud) {
-            printf("\n🎉 ¡GANASTE! La palabra: %s\n", palabraSecreta);
+            printf("\n¡GANASTE! La palabra: %s\n", palabraSecreta);
             int puntuacion = calcularPuntuacion(dificultad, intentos);
-            printf("Puntuación: %d\n", puntuacion);
+            printf("Puntuacion: %d\n", puntuacion);
             actualizarEstadisticas(jugador, 1, puntuacion);
             break;
         }
     }
     
     if (intentos == 0) {
-        printf("\n💀 ¡PERDISTE! La palabra: %s\n", palabraSecreta);
+        printf("\n ¡PERDISTE! La palabra: %s\n", palabraSecreta);
         dibujarAhorcado(6);
         actualizarEstadisticas(jugador, 0, 0);
     }
