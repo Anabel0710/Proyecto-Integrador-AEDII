@@ -1,6 +1,6 @@
 /**
  * LISTA ENLAZADA - Diccionario de palabras para el Ahorcado
- * Implementa una lista enlazada simple para gestionar palabras por categorías
+ * Implementa una lista enlazada simple para gestionar palabras por categorias
  */
 
 #ifndef LISTA_PALABRAS_H
@@ -17,7 +17,7 @@
 // Nodo de la lista enlazada
 typedef struct NodoPalabra {
     char palabra[MAX_PALABRA];        // Palabra almacenada
-    char categoria[MAX_CATEGORIA];    // Categoría de la palabra
+    char categoria[MAX_CATEGORIA];    // Categoria de la palabra
     int dificultad;                   // Nivel de dificultad (1-3)
     struct NodoPalabra* siguiente;    // Puntero al siguiente nodo
 } NodoPalabra;
@@ -28,17 +28,17 @@ typedef struct {
     int tamaño;                       // Cantidad de elementos
 } ListaPalabras;
 
-// Crea una nueva lista vacía
+// Crea una nueva lista vacia
 ListaPalabras* crearListaPalabras();
 
 // Inserta una nueva palabra en la lista
 void insertarPalabra(ListaPalabras* lista, const char* palabra, 
                     const char* categoria, int dificultad);
 
-// Busca una palabra específica en la lista
+// Busca una palabra especifica en la lista
 NodoPalabra* buscarPalabra(const ListaPalabras* lista, const char* palabra);
 
-// Obtiene una palabra aleatoria de una dificultad específica
+// Obtiene una palabra aleatoria de una dificultad especifica
 NodoPalabra* obtenerPalabraAleatoria(const ListaPalabras* lista, int dificultad);
 
 // Muestra todas las palabras de la lista (para debugging)
@@ -145,8 +145,9 @@ int cargarPalabrasDesdeArchivo(ListaPalabras* lista, const char* filename) {
     int palabrasCargadas = 0;
     
     while (fgets(linea, sizeof(linea), archivo) != NULL) {
-        if (linea[0] == '#' || linea[0] == '\n') continue;
-        
+        if (linea[0] == '#' || linea[0] == '\n'){
+            continue;
+        }
         if (sscanf(linea, "%19s %14s %d", palabra, categoria, &dificultad) == 3) {
             insertarPalabra(lista, palabra, categoria, dificultad);
             palabrasCargadas++;

@@ -5,13 +5,12 @@
 #include <time.h>
 #include <stdbool.h>
 
-// Incluir SOLO los headers necesarios
 #include "tad_jugador.h"
 #include "lista_palabras.h"
 #include "ahorcado.h"
 #include "tres_en_raya.h" 
-// #include "memorama.h"      // Cuando lo integres  
-// #include "adivinanza.h"    // Cuando lo integres
+#include "memorama.h"     
+
 
 void mostrarMenuPrincipal();
 
@@ -35,7 +34,7 @@ int main() {
         printf("¡Bienvenido de nuevo, %s!\n", nombre);
     }
 
-    // Menú principal
+    // Menu principal
     do {
         mostrarMenuPrincipal();
         scanf("%d", &opcion);
@@ -51,8 +50,7 @@ int main() {
                 break;
             case 3:
                 printf("\nIniciando Memorama...\n");
-                // jugarMemorama(jugadorActual);
-                printf("(Próximamente)\n");
+                jugarMemorama(jugadorActual);
                 break;
             case 4:
                 printf("\n");
@@ -62,7 +60,7 @@ int main() {
                 printf("¡Gracias por jugar!\n");
                 break;
             default:
-                printf("Opción inválida.\n");
+                printf("Opcion invalida.\n");
         }
 
         // Guardar datos
@@ -77,11 +75,11 @@ int main() {
 }
 
 void mostrarMenuPrincipal() {
-    printf("\n=== MENÚ PRINCIPAL ===\n");
+    printf("\n=== MENU PRINCIPAL ===\n");
     printf("1. 🧠 Ahorcado\n");
     printf("2. ⭕ Tres en Raya\n");
     printf("3. 🎴 Memorama\n");
-    printf("4. 📊 Estadísticas\n");
+    printf("4. 📊 Estadisticas\n");
     printf("0. 🚪 Salir\n");
     printf("Selecciona: ");
 }

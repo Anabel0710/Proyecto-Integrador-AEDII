@@ -1,5 +1,5 @@
 /**
- * TAD JUGADOR - Gestiona la información de los jugadores
+ * TAD JUGADOR - Gestiona la informacion de los jugadores
  */
 
 #ifndef TAD_JUGADOR_H
@@ -14,7 +14,7 @@
 // Estructura que representa un jugador del sistema
 typedef struct {
     char nombre[MAX_NOMBRE];           
-    int puntuacion_total;             // Puntuación acumulada
+    int puntuacion_total;             // Puntuacion acumulada
     int partidas_jugadas;             // Total de partidas jugadas
     int partidas_ganadas;             
 } Jugador;
@@ -24,10 +24,10 @@ Jugador* crearJugador(const char* nombre);
 // Libera la memoria ocupada por un jugador
 void destruirJugador(Jugador* jugador);
 
-// Actualiza las estadísticas después de una partida
+// Actualiza las estadisticas despues de una partida
 void actualizarEstadisticas(Jugador* jugador, int ganada, int puntos);
 
-// Muestra la información del jugador por consola
+// Muestra la informacion del jugador por consola
 void mostrarJugador(const Jugador* jugador);
 
 // Guarda un jugador en archivo binario (persistencia)

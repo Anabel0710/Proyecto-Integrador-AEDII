@@ -66,8 +66,6 @@ CHOCOLATE comida 3
 HELADO comida 3
 GALLETA comida 3
 HAMBURGUESA comida 3
-
-# ========== CATEGORÍA EXTRA: PROFESIONES ==========
 MEDICO profesiones 2
 MAESTRO profesiones 2
 BOMBERO profesiones 2
