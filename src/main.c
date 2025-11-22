@@ -77,9 +77,9 @@ int main() {
 void mostrarMenuPrincipal() {
     printf("\n=== MENU PRINCIPAL ===\n");
     printf("1. Ahorcado\n");
-    printf("2. ⭕ Tres en Raya\n");
-    printf("3. 🎴 Memorama\n");
-    printf("4. 📊 Estadisticas\n");
-    printf("0. 🚪 Salir\n");
+    printf("2. Tres en Raya\n");
+    printf("3. Memorama\n");
+    printf("4. Estadisticas\n");
+    printf("0. Salir\n");
     printf("Selecciona: ");
 }
